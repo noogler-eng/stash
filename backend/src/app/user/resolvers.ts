@@ -1,6 +1,7 @@
 import axios from "axios";
 import prisma from "../../clients/db/db";
 import generateToken from "../../services/jwtToken";
+import { graphql_context } from "../interfaces";
 
 // when we fetch somthing then resolver contains the logic of returning data
 const resolvers = {
@@ -41,6 +42,29 @@ const resolvers = {
       console.log(error);
       return "Verification Failed!";
     }
+  },
+
+  // parent, argument, context
+  getCurrentUser: async (
+    parent: any,
+    {},
+    context: graphql_context | undefined
+  ) => {
+    if (context == undefined) return null;
+    const email = context.email;
+    const user = await prisma.user.findUnique({
+      where: {
+        email: email,
+      },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        profileImg: true,
+      },
+    });
+
+    return user;
   },
 };
 
