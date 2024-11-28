@@ -2,17 +2,12 @@
 import { Container } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { useGoogleLogin } from "@react-oauth/google";
-import { googleLogout } from "@react-oauth/google";
+import graphQLClient from "@/clients/api";
+import { GoogleLogin } from "@react-oauth/google";
+import { userQueries } from "@/graphql/query/user";
 
 export default function Landing() {
   const navigate = useRouter();
-
-  // it will gives us short love token which will be valid for short period of time
-  // we have to decode that token to fetch the information, decode using jwt.io
-  const login = useGoogleLogin({
-    onSuccess: (tokenResponse) => console.log(tokenResponse),
-  });
 
   return (
     <div className="min-h-screen">
@@ -28,12 +23,32 @@ export default function Landing() {
           </h1>
         </div>
         <div className="flex gap-2 items-center">
-          <Button onClick={() => login()} variant={"default"}>
-            sign in with google 🚀🚀
-          </Button>
-          <Button onClick={() => googleLogout()} variant={"default"}>
-            logout 🚀🚀
-          </Button>
+          <GoogleLogin
+            onSuccess={async (credentialResponse) => {
+              // it will gives us short love token which will be valid for short period of time
+              // we have to decode that token to fetch the information, decode using jwt.io
+              const google_token = credentialResponse.credential;
+              if (!google_token) {
+                alert("google authorisation failed");
+                return;
+              }
+
+              // this token is formed by google token and jwt combination
+              const { verifyGoogleToken } = await graphQLClient.request(
+                userQueries,
+                { token: google_token }
+              );
+
+              if (verifyGoogleToken) {
+                localStorage.setItem("stash_token", verifyGoogleToken);
+              } else {
+                throw new Error("token not received!");
+              }
+            }}
+            onError={() => {
+              console.log("Login Failed");
+            }}
+          />
           <Button onClick={() => navigate.replace("/signin")}>Button</Button>
         </div>
       </div>

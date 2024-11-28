@@ -3,9 +3,14 @@ import prisma from "../clients/db/db";
 import user from "./user/index";
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from '@apollo/server/express4';
+import cors from "cors";
 
 async function initServer() {
   const app = express();
+
+  // adding the cors for allowing our client to react with it
+  // npm i @types/cors cors
+  app.use(cors());
 
   app.use(express.json());
   const graphqlServer = new ApolloServer({
