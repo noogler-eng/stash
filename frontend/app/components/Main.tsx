@@ -1,4 +1,5 @@
 import Feeds from "./Feeds";
+import RightBar from "./RightBar";
 import Sidebar from "./Sidebar";
 
 export default function Main() {
@@ -10,7 +11,9 @@ export default function Main() {
       <div className="col-span-3 h-full border-r">
         <Feeds />
       </div>
-      <div className="col-span-1 h-full"></div>
+      <div className="col-span-1 h-full">
+        <RightBar />
+      </div>
     </div>
   );
 }
