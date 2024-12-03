@@ -1,4 +1,3 @@
-'use client'
 import { GraphQLClient } from "graphql-request";
 
 // check whether the code is being executed on the client-side (in the browser) or 
@@ -9,7 +8,7 @@ import { GraphQLClient } from "graphql-request";
 // we can aslo set the headers for all the req, so that every req must be authorisied
 const graphQLClient = new GraphQLClient('http://localhost:8000/graphql', {
     headers: {
-        Authorization: window.localStorage.getItem('stash_token') ? `Bearer ${localStorage.getItem('stash_token')}` : ""
+        Authorization: localStorage.getItem('stash_token') ? `Bearer ${localStorage.getItem('stash_token')}` : ""
     }
 });
 export default graphQLClient;

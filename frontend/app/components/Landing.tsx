@@ -5,9 +5,11 @@ import { useRouter } from "next/navigation";
 import graphQLClient from "@/clients/api";
 import { GoogleLogin } from "@react-oauth/google";
 import { userQueries } from "@/graphql/query/user";
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function Landing() {
   const navigate = useRouter();
+  const queryClient = useQueryClient();
 
   return (
     <div className="min-h-screen">
@@ -41,6 +43,9 @@ export default function Landing() {
 
               if (verifyGoogleToken) {
                 localStorage.setItem("stash_token", verifyGoogleToken);
+                await queryClient.invalidateQueries({
+                  queryKey: ["currentUser"],
+                });
               } else {
                 throw new Error("token not received!");
               }
