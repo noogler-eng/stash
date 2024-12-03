@@ -46,7 +46,7 @@ async function initServer() {
             id: "",
             email: "",
           };
-        const user = await decodeToken(token.split(' ')[1]);
+        const user = await decodeToken(token.split(" ")[1]);
         return user;
       },
     })
