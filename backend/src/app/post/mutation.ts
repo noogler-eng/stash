@@ -2,7 +2,6 @@ import { graphql_context } from "../interfaces";
 import prisma from "../../clients/db/db";
 
 const mutations = {
-  // @ts-ignore
   usePostPost: async (
     parent: any,
     {
@@ -18,7 +17,7 @@ const mutations = {
   ) => {
     if (!context) return "Invalid User!";
     try {
-      const { id, email } = context;
+      const { id } = context;
       const post = await prisma.post.create({
         data: {
           content: payload.content,

@@ -1,3 +1,4 @@
+'use client'
 import { GraphQLClient } from "graphql-request";
 
 // check whether the code is being executed on the client-side (in the browser) or 

@@ -10,7 +10,7 @@ export default function RightBar() {
           <div className="p-3 border bg-gray-100 rounded-xl drop-shadow-xl">
             {user.user?.profileImg && (
               <img
-                src={user.user?.profileImg || ""}
+                src={user.user?.profileImg}
                 className="rounded-full"
                 width={70}
               />
