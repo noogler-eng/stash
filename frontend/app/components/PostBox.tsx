@@ -9,7 +9,7 @@ export default function PostBox() {
     <DialogDemo>
       <div>
         {user && (
-          <div className="p-2 flex gap-4 items-start bg-gray-100 hover:bg-gray-200 rounded-lg ">
+          <div className="p-2 flex gap-4 items-start bg-gray-100 rounded-lg ">
             {user.user?.profileImg && (
               <img
                 src={user.user?.profileImg}

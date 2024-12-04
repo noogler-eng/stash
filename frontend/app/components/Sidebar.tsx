@@ -6,6 +6,7 @@ import { Mail } from "lucide-react";
 import { BriefcaseBusiness } from "lucide-react";
 import { Hash } from "lucide-react";
 import { Book } from "lucide-react";
+import { DialogDemo } from "./DialogBox";
 
 export default function Sidebar() {
   const routes: {
@@ -67,9 +68,11 @@ export default function Sidebar() {
           })}
         </div>
       </div>
-      <div className="flex gap-1 items-center hover:bg-gray-200 w-full p-2 rounded-full cursor:pointer font-semibold text-center justify-center bg-gray-100 drop-shadow-xl">
-        Tweet
-      </div>
+      <DialogDemo>
+        <div className="flex gap-1 items-center hover:bg-gray-200 w-full p-2 rounded-full cursor:pointer font-semibold text-center justify-center bg-gray-100 drop-shadow-xl">
+          Tweet
+        </div>
+      </DialogDemo>
     </div>
   );
 }

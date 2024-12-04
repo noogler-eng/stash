@@ -81,7 +81,17 @@ export function DialogDemo({ children }: { children: React.ReactNode }) {
               <img src={imageUrl} className="w-1/2" />
             </div>
           )}
-          <div className="w-full items-center gap-4">
+          <div className="w-full items-center gap-4 flex flex-col gap-1">
+            <Button
+              onClick={() => {
+                setFile(null);
+                setImageUrl("");
+              }}
+              className="w-full"
+            >
+              clear images
+            </Button>
+
             <Button id="name" className="w-full" onClick={handelGenerateWithAi}>
               generate with ai
             </Button>
