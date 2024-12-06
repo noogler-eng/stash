@@ -24,8 +24,6 @@ export function DialogDemo({ children }: { children: React.ReactNode }) {
 
   const handelGenerateWithAi = async () => {};
 
-  console.log(imageUrl);
-
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>

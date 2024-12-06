@@ -1,3 +1,4 @@
+'use client'
 import { currentUser } from "@/hooks/user";
 
 export default function RightBar() {

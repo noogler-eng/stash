@@ -1,3 +1,4 @@
+'use client'
 import graphQLClient from "@/clients/api";
 import { getCurrentUser } from "@/graphql/query/user";
 import { useQuery } from "@tanstack/react-query";

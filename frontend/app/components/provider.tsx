@@ -6,7 +6,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 export default function Provider({ children }: { children: React.ReactNode }) {
   const queryClient = new QueryClient();
   const clientId: string = process.env.NEXT_PUBLIC_CLIENT_ID || "";
-  console.log(clientId)
 
   return (
     <GoogleOAuthProvider clientId={clientId}>

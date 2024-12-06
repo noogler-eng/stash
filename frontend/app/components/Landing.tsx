@@ -1,16 +1,16 @@
 "use client";
 import { Container } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
 import graphQLClient from "@/clients/api";
 import { GoogleLogin } from "@react-oauth/google";
 import { userQueries } from "@/graphql/query/user";
 import { useQueryClient } from "@tanstack/react-query";
 import { CarouselSpacing } from "./Cards";
+import { currentUser } from "@/hooks/user";
 
 export default function Landing() {
-  const navigate = useRouter();
   const queryClient = useQueryClient();
+  const user = currentUser();
 
   return (
     <div className="min-h-screen flex flex-col items-center">
@@ -43,10 +43,12 @@ export default function Landing() {
               );
 
               if (verifyGoogleToken) {
+                console.log("verify token: ", verifyGoogleToken);
                 localStorage.setItem("stash_token", verifyGoogleToken);
                 await queryClient.invalidateQueries({
                   queryKey: ["currentUser"],
                 });
+                window.location.reload();
               } else {
                 throw new Error("token not received!");
               }
@@ -55,7 +57,16 @@ export default function Landing() {
               console.log("Login Failed");
             }}
           />
-          <Button onClick={() => navigate.replace("/signin")}>Button</Button>
+          {user.user?.name && (
+            <Button
+              onClick={() => {
+                localStorage.removeItem("stash_token");
+                window.location.reload();
+              }}
+            >
+              logout
+            </Button>
+          )}
         </div>
       </div>
       <div className="flex flex-col items-center flex-grow p-10">

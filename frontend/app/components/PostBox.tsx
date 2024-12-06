@@ -1,3 +1,4 @@
+'use client'
 import { currentUser } from "@/hooks/user";
 import { DialogDemo } from "./DialogBox";
 import { Image } from "lucide-react";
@@ -8,7 +9,7 @@ export default function PostBox() {
   return (
     <DialogDemo>
       <div>
-        {user && (
+        {user.user?.name && (
           <div className="p-2 flex gap-4 items-start bg-gray-100 rounded-lg ">
             {user.user?.profileImg && (
               <img
