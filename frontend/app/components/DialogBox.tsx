@@ -1,4 +1,5 @@
 "use client";
+import graphQLClient from "@/clients/api";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -11,6 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { userPostMutation } from "@/graphql/query/post";
 import { currentUser } from "@/hooks/user";
 import { useState } from "react";
 
@@ -20,7 +22,19 @@ export function DialogDemo({ children }: { children: React.ReactNode }) {
   const [file, setFile] = useState<File | null>();
   const [imageUrl, setImageUrl] = useState("");
 
-  const handelPost = async () => {};
+  const handelPost = async (e: any) => {
+    e.preventDefault();
+    console.log("working");
+    const payload = {
+      content: content,
+      image:
+        "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+    };
+    const result = await graphQLClient.request(userPostMutation, {
+      payload,
+    });
+    console.log(result);
+  };
 
   const handelGenerateWithAi = async () => {};
 
@@ -28,7 +42,7 @@ export function DialogDemo({ children }: { children: React.ReactNode }) {
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader onSubmit={handelPost}>
+        <DialogHeader>
           <DialogTitle>Tweet</DialogTitle>
           <DialogDescription>
             Make sure this is available to everyone. Click post when you're
@@ -96,7 +110,7 @@ export function DialogDemo({ children }: { children: React.ReactNode }) {
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit">post</Button>
+          <Button onClick={handelPost}>post</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
