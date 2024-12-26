@@ -1,18 +1,12 @@
 "use client";
-import BottomBar from "./components/BottomBar";
-import Landing from "./components/Landing";
-import Main from "./components/Main";
-import Features from "./components/Features";
+import Feeds from "./components/Feeds";
+import PostBox from "./components/PostBox";
 
 export default function Home() {
   return (
-    <div className="min-h-screen max-w-screen border overflow-x-hidden">
-      <Landing />
-      <div className="md:px-32">
-        <Main />
-      </div>
-      <Features />
-      <BottomBar />
+    <div className="col-span-3 h-full border-r">
+      <PostBox />
+      <Feeds />
     </div>
   );
 }

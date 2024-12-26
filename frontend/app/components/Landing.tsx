@@ -7,6 +7,7 @@ import { userQueries } from "@/graphql/query/user";
 import { useQueryClient } from "@tanstack/react-query";
 import { CarouselSpacing } from "./Cards";
 import { currentUser } from "@/hooks/user";
+import Link from "next/link";
 
 export default function Landing() {
   const queryClient = useQueryClient();
@@ -26,6 +27,9 @@ export default function Landing() {
           </h1>
         </div>
         <div className="flex gap-2 items-center">
+          <Link href="#arena" className="">
+            Arena
+          </Link>
           <GoogleLogin
             onSuccess={async (credentialResponse) => {
               // it will gives us short love token which will be valid for short period of time
