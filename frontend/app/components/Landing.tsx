@@ -8,6 +8,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { CarouselSpacing } from "./Cards";
 import { currentUser } from "@/hooks/user";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Landing() {
   const queryClient = useQueryClient();
@@ -85,12 +86,27 @@ export default function Landing() {
             a microservices architecture and modern tech stack to ensure it can
             handle a large number of users and real-time interactions.
           </p>
-          <img src="elon.webp" className="rounded-xl w-full" />
+          <Image
+            src="/elon.webp"
+            className="rounded-xl w-full"
+            width={1000}
+            height={200}
+            alt="hero_1"
+          />
           <div className="flex w-full gap-2">
-            <img src="love.jpg" className="rounded-xl w-1/4" />
-            <img
-              src="elon1.webp"
+            <Image
+              src="/love.jpg"
+              className="rounded-xl w-1/4"
+              width={400}
+              height={200}
+              alt="hero_1"
+            />
+            <Image
+              src="/elon1.webp"
               className="rounded-xl w-3/4 overflow-hidden"
+              width={400}
+              height={200}
+              alt="hero_1"
             />
           </div>
         </div>

@@ -1,7 +1,7 @@
-'use client'
+"use client";
 import { currentUser } from "@/hooks/user";
 import { DialogDemo } from "./DialogBox";
-import { Image } from "lucide-react";
+import Image from "next/image";
 
 export default function PostBox() {
   const user = currentUser();
@@ -12,10 +12,12 @@ export default function PostBox() {
         {user.user?.name && (
           <div className="p-2 flex gap-4 items-start bg-gray-100 rounded-lg ">
             {user.user?.profileImg && (
-              <img
+              <Image
                 src={user.user?.profileImg}
                 className="rounded-full"
                 width={40}
+                height={40}
+                alt="user_image"
               />
             )}
             <div className="flex flex-col gap-1 justify-center w-full">
@@ -28,9 +30,6 @@ export default function PostBox() {
                 placeholder="what's happening?"
                 onClick={() => {}}
               />
-              <div>
-                <Image size={18}/>
-              </div>
             </div>
           </div>
         )}

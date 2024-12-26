@@ -7,8 +7,21 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 
 export default function Profile() {
+  // useParams hook can be work in the server side also
+  // server side is side in wheich we deal with data on server and directly send it to client
   const params = useParams<{ id: string }>();
   const user = userById({ id: params.id });
+  if (!user || !user.data) {
+    return (
+      <div className="col-span-3 h-full border-r w-full">
+        <div className="min-h-screen flex items-center justify-center w-full text-4xl flex-col">
+          404! <br/>
+          <span className="text-5xl font-extrabold underline"> User </span> not
+          found!
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="col-span-3 h-full border-r">

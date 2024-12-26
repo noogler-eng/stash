@@ -1,5 +1,6 @@
-'use client'
+"use client";
 import { currentUser } from "@/hooks/user";
+import Image from "next/image";
 
 export default function RightBar() {
   const user = currentUser();
@@ -10,10 +11,12 @@ export default function RightBar() {
         {user && (
           <div className="p-3 border bg-gray-100 rounded-xl drop-shadow-xl">
             {user.user?.profileImg && (
-              <img
+              <Image
                 src={user.user?.profileImg}
                 className="rounded-full"
-                width={70}
+                width={100}
+                height={90}
+                alt="user_img"
               />
             )}
             <div>
