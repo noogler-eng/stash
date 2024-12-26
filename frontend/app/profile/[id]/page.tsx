@@ -3,10 +3,13 @@ import Link from "next/link";
 import { MoveLeft } from "lucide-react";
 import FeedCard from "../../components/FeedCard";
 import { userById } from "@/hooks/user";
+import Image from "next/image";
+import { useParams } from "next/navigation";
 
-export default function Profile({ params }: { params: { id: string } }) {
-  console.log(params.id);
+export default function Profile() {
+  const params = useParams<{ id: string }>();
   const user = userById({ id: params.id });
+
   return (
     <div className="col-span-3 h-full border-r">
       <div className="w-full flex gap-2 items-center p-2">
@@ -22,11 +25,15 @@ export default function Profile({ params }: { params: { id: string } }) {
       </div>
       <div className="w-full flex flex-col gap-2 items-center p-2">
         <div className="h-32 bg-gradient-to-r from-cyan-500 to-blue-500 w-full p-8 rounded-xl">
-          <img
-            src={user.data?.getUserById.profileImg || ""}
-            className="rounded-full border-8 border-white"
-            width={150}
-          />
+          {user.data?.getUserById.profileImg && (
+            <Image
+              src={user.data?.getUserById.profileImg}
+              className="rounded-full border-8 border-white"
+              width={150}
+              height={150}
+              alt="profile-image"
+            />
+          )}
         </div>
         <div className="w-full flex flex-col items-start mt-12 px-12">
           <h2 className="text-3xl font-extrabold" id="name">

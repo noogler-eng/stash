@@ -2,8 +2,8 @@ import { Repeat2 } from "lucide-react";
 import { Heart } from "lucide-react";
 import { MessageCircle } from "lucide-react";
 import Link from "next/link";
-import { Share } from 'lucide-react';
-
+import { Share } from "lucide-react";
+import Image from "next/image";
 
 export default function FeedCard({
   data,
@@ -21,7 +21,15 @@ export default function FeedCard({
     <div className="flex rounded-xl border-b p-4 cursor-pointer">
       <div>
         <Link href={`/profile/${data.username}`}>
-          <img src={data.authorImg} className="rounded-full p-1" width={100} />
+          {data.authorImg && (
+            <Image
+              src={data.authorImg}
+              className="rounded-full p-1"
+              width={100}
+              height={100}
+              alt="author-img"
+            />
+          )}
         </Link>
       </div>
       <div className="px-1">
