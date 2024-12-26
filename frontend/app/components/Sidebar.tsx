@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { Container } from "lucide-react";
 import { House } from "lucide-react";
@@ -7,8 +8,11 @@ import { BriefcaseBusiness } from "lucide-react";
 import { Hash } from "lucide-react";
 import { Book } from "lucide-react";
 import { DialogDemo } from "./DialogBox";
+import { currentUser } from "@/hooks/user";
 
 export default function Sidebar() {
+  const user = currentUser();
+
   const routes: {
     title: string;
     component: React.ReactNode;
@@ -22,7 +26,7 @@ export default function Sidebar() {
     {
       title: "Profile",
       component: <User size={20} strokeWidth={3} />,
-      link: "/profile",
+      link: `/profile/${user.data?.getCurrentUser.id}`,
     },
     {
       title: "Messages",

@@ -66,6 +66,30 @@ const resolvers = {
 
     return user;
   },
+
+  getUserById: async (
+    parent: any,
+    {
+      id,
+    }: {
+      id: string;
+    },
+    context: graphql_context | undefined
+  ) => {
+    const user = await prisma.user.findUnique({
+      where: {
+        id: id,
+      },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        profileImg: true,
+      },
+    });
+
+    return user;
+  },
 };
 
 export default resolvers;

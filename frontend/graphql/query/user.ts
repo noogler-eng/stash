@@ -17,3 +17,14 @@ export const getCurrentUser = graphql(`
     }
   }
 `);
+
+export const getUserById = graphql(`
+  query GetUserById($id: String) {
+      getUserById(id: $id) {
+        id
+        name
+        email
+        profileImg
+      }
+    }
+`);
