@@ -1,6 +1,6 @@
 import express from "express";
-import prisma from "../clients/db/db";
 import user from "./user/index";
+import post from "./post/index";
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
 import cors from "cors";
@@ -18,18 +18,25 @@ async function initServer() {
   const graphqlServer = new ApolloServer<graphql_context>({
     typeDefs: `
         ${user.types}
+        ${post.types}
         type Query {
             ${user.queries}
+            ${post.simple_query}
         }
+        type Mutation {
+        ${post.muta}
+        }
+        
     `,
     resolvers: {
       // resolution of queries
       Query: {
         ...user.resolvers,
+        ...post.resolvers,
       },
-      //   Mutation: {
-      //     // Define your mutations resolvers here (if needed)
-      //   },
+      Mutation: {
+        ...post.mutations,
+      },
     },
   });
 

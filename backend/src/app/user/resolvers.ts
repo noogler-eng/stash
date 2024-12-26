@@ -85,6 +85,16 @@ const resolvers = {
         name: true,
         email: true,
         profileImg: true,
+        posts: {
+          select: {
+            id: true,
+            contentImg: true,
+            content: true,
+            likes: true,
+            comments: true,
+            createdAt: true
+          }
+        }
       },
     });
 

@@ -1,9 +1,10 @@
 const queries = `
-    usePostPost(payload: {
-        content: String
-        image: File
-        likes: 0
-    }): String
-    getPostAccToPagination(): Post[]
+    getAllPost: [Post!]!
 `;
-export default queries;
+
+
+const muta = `
+    usePostPost(payload: postCreationPayload): String!
+`;
+
+export default {queries, muta};

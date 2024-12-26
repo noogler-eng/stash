@@ -16,7 +16,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
 const documents = {
     "\n  query verifyUser($token: String) {\n    verifyGoogleToken(token: $token)\n  }\n": types.VerifyUserDocument,
     "\n  query GetCurrentUser {\n    getCurrentUser {\n      id\n      name\n      email\n      profileImg\n    }\n  }\n": types.GetCurrentUserDocument,
-    "\n  query GetUserById($id: String) {\n      getUserById(id: $id) {\n        id\n        name\n        email\n        profileImg\n      }\n    }\n": types.GetUserByIdDocument,
+    "\n  query GetUserById($id: String!) {\n    getUserById(id: $id) {\n      id\n      name\n      email\n      profileImg\n      posts {\n        id\n        contentImg\n        content\n        likes\n        comments\n        createdAt\n      }\n    }\n  }\n": types.GetUserByIdDocument,
 };
 
 /**
@@ -44,7 +44,7 @@ export function graphql(source: "\n  query GetCurrentUser {\n    getCurrentUser 
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query GetUserById($id: String) {\n      getUserById(id: $id) {\n        id\n        name\n        email\n        profileImg\n      }\n    }\n"): (typeof documents)["\n  query GetUserById($id: String) {\n      getUserById(id: $id) {\n        id\n        name\n        email\n        profileImg\n      }\n    }\n"];
+export function graphql(source: "\n  query GetUserById($id: String!) {\n    getUserById(id: $id) {\n      id\n      name\n      email\n      profileImg\n      posts {\n        id\n        contentImg\n        content\n        likes\n        comments\n        createdAt\n      }\n    }\n  }\n"): (typeof documents)["\n  query GetUserById($id: String!) {\n    getUserById(id: $id) {\n      id\n      name\n      email\n      profileImg\n      posts {\n        id\n        contentImg\n        content\n        likes\n        comments\n        createdAt\n      }\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

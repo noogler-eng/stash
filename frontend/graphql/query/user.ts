@@ -19,12 +19,20 @@ export const getCurrentUser = graphql(`
 `);
 
 export const getUserById = graphql(`
-  query GetUserById($id: String) {
-      getUserById(id: $id) {
+  query GetUserById($id: String!) {
+    getUserById(id: $id) {
+      id
+      name
+      email
+      profileImg
+      posts {
         id
-        name
-        email
-        profileImg
+        contentImg
+        content
+        likes
+        comments
+        createdAt
       }
     }
+  }
 `);

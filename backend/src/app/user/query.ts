@@ -3,7 +3,7 @@
 const queries = `
     verifyGoogleToken(token: String): String!
     getCurrentUser: User!
-    getUserById(id: String): User!
+    getUserById(id: String): UserWithPosts!
 `
 
 export default queries;

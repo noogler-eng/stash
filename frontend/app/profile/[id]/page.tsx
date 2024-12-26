@@ -15,7 +15,7 @@ export default function Profile() {
     return (
       <div className="col-span-3 h-full border-r w-full">
         <div className="min-h-screen flex items-center justify-center w-full text-4xl flex-col">
-          404! <br/>
+          404! <br />
           <span className="text-5xl font-extrabold underline"> User </span> not
           found!
         </div>
@@ -33,7 +33,7 @@ export default function Profile() {
           <h3 className="text-2xl underline font-extrabold">
             {user.data?.getUserById.name}
           </h3>
-          <p className="text-sm text-gray-500">{100} tweets</p>
+          <p className="text-sm text-gray-500">{user.data?.getUserById.posts.length} tweets</p>
         </div>
       </div>
       <div className="w-full flex flex-col gap-2 items-center p-2">

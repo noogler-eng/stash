@@ -9,8 +9,7 @@ const mutations = {
     }: {
       payload: {
         content: string;
-        image: File;
-        likes: Number;
+        image: string;
       };
     },
     context: graphql_context | undefined
@@ -22,7 +21,7 @@ const mutations = {
         data: {
           content: payload.content,
           userId: id,
-          contentImg: "",
+          contentImg: payload.image,
           likes: 0,
         },
       });

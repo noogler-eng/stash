@@ -1,10 +1,7 @@
 const types = `
-    type Post{
-        id: ID!
+    input postCreationPayload {
         content: String
-        contentImg: String
-        user: User
-        likes: Int
+        image: String
     }
 `;
 
