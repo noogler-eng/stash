@@ -14,7 +14,12 @@ export const getPosts = graphql(`
       contentImg
       content
       likes
-      comments
+      comments {
+        id: ID!
+        content: String
+        userId: String
+        createdAt: String
+      }
       createdAt
     }
   }

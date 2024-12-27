@@ -91,10 +91,17 @@ const resolvers = {
             contentImg: true,
             content: true,
             likes: true,
-            comments: true,
-            createdAt: true
-          }
-        }
+            comments: {
+              select: {
+                id: true,
+                content: true,
+                userId: true,
+                createdAt: true,
+              },
+            },
+            createdAt: true,
+          },
+        },
       },
     });
 

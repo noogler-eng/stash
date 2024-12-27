@@ -6,12 +6,19 @@ const types = `
         profileImg: String
     }
 
+    type Comment {
+        id: ID!
+        content: String
+        userId: String
+        createdAt: String
+    }
+
     type Post {
         id: ID!
         contentImg: String
         content: String
         likes: Int
-        comments: Int
+        comments: [Comment] 
         createdAt: String
     }
 

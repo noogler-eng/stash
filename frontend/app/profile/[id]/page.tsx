@@ -11,6 +11,7 @@ export default function Profile() {
   // server side is side in wheich we deal with data on server and directly send it to client
   const params = useParams<{ id: string }>();
   const user = userById({ id: params.id });
+
   if (!user || !user.data) {
     return (
       <div className="col-span-3 h-full border-r w-full">
@@ -33,7 +34,9 @@ export default function Profile() {
           <h3 className="text-2xl underline font-extrabold">
             {user.data?.getUserById.name}
           </h3>
-          <p className="text-sm text-gray-500">{user.data?.getUserById.posts.length} tweets</p>
+          <p className="text-sm text-gray-500">
+            {user.data?.getUserById.posts.length} tweets
+          </p>
         </div>
       </div>
       <div className="w-full flex flex-col gap-2 items-center p-2">
@@ -62,138 +65,22 @@ export default function Profile() {
           </p>
         </div>
         <div className="flex flex-col h-screen overflow-y-scroll">
-          <FeedCard
-            data={{
-              author: "Virat Kohli",
-              authorImg:
-                "https://images.unsplash.com/photo-1640960543409-dbe56ccc30e2?q=80&w=2725&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-              content:
-                "Coming back to India and staying with your parents heals you in ways you never knew you needed 🥹❤️ 1 month in India gives you strength for those 11 months in pardesh 🫶",
-              contentImg: "",
-              username: "@viratkholi",
-              createdAt: new Date(),
-            }}
-          />
-          <FeedCard
-            data={{
-              author: "Virat Kohli",
-              authorImg:
-                "https://images.unsplash.com/photo-1640960543409-dbe56ccc30e2?q=80&w=2725&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-              content:
-                "Coming back to India and staying with your parents heals you in ways you never knew you needed 🥹❤️ 1 month in India gives you strength for those 11 months in pardesh 🫶",
-              contentImg: "",
-              username: "@viratkholi",
-              createdAt: new Date(),
-            }}
-          />
-          <FeedCard
-            data={{
-              author: "Virat Kohli",
-              authorImg:
-                "https://images.unsplash.com/photo-1640960543409-dbe56ccc30e2?q=80&w=2725&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-              content:
-                "Coming back to India and staying with your parents heals you in ways you never knew you needed 🥹❤️ 1 month in India gives you strength for those 11 months in pardesh 🫶",
-              contentImg: "",
-              username: "@viratkholi",
-              createdAt: new Date(),
-            }}
-          />
-          <FeedCard
-            data={{
-              author: "Virat Kohli",
-              authorImg:
-                "https://images.unsplash.com/photo-1640960543409-dbe56ccc30e2?q=80&w=2725&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-              content:
-                "Coming back to India and staying with your parents heals you in ways you never knew you needed 🥹❤️ 1 month in India gives you strength for those 11 months in pardesh 🫶",
-              contentImg: "",
-              username: "@viratkholi",
-              createdAt: new Date(),
-            }}
-          />
-          <FeedCard
-            data={{
-              author: "Virat Kohli",
-              authorImg:
-                "https://images.unsplash.com/photo-1640960543409-dbe56ccc30e2?q=80&w=2725&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-              content:
-                "Coming back to India and staying with your parents heals you in ways you never knew you needed 🥹❤️ 1 month in India gives you strength for those 11 months in pardesh 🫶",
-              contentImg: "",
-              username: "@viratkholi",
-              createdAt: new Date(),
-            }}
-          />
-          <FeedCard
-            data={{
-              author: "Virat Kohli",
-              authorImg:
-                "https://images.unsplash.com/photo-1640960543409-dbe56ccc30e2?q=80&w=2725&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-              content:
-                "Coming back to India and staying with your parents heals you in ways you never knew you needed 🥹❤️ 1 month in India gives you strength for those 11 months in pardesh 🫶",
-              contentImg: "",
-              username: "@viratkholi",
-              createdAt: new Date(),
-            }}
-          />
-          <FeedCard
-            data={{
-              author: "Virat Kohli",
-              authorImg:
-                "https://images.unsplash.com/photo-1640960543409-dbe56ccc30e2?q=80&w=2725&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-              content:
-                "Coming back to India and staying with your parents heals you in ways you never knew you needed 🥹❤️ 1 month in India gives you strength for those 11 months in pardesh 🫶",
-              contentImg: "",
-              username: "@viratkholi",
-              createdAt: new Date(),
-            }}
-          />
-          <FeedCard
-            data={{
-              author: "Virat Kohli",
-              authorImg:
-                "https://images.unsplash.com/photo-1640960543409-dbe56ccc30e2?q=80&w=2725&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-              content:
-                "Coming back to India and staying with your parents heals you in ways you never knew you needed 🥹❤️ 1 month in India gives you strength for those 11 months in pardesh 🫶",
-              contentImg: "",
-              username: "@viratkholi",
-              createdAt: new Date(),
-            }}
-          />
-          <FeedCard
-            data={{
-              author: "Virat Kohli",
-              authorImg:
-                "https://images.unsplash.com/photo-1640960543409-dbe56ccc30e2?q=80&w=2725&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-              content:
-                "Coming back to India and staying with your parents heals you in ways you never knew you needed 🥹❤️ 1 month in India gives you strength for those 11 months in pardesh 🫶",
-              contentImg: "",
-              username: "@viratkholi",
-              createdAt: new Date(),
-            }}
-          />
-          <FeedCard
-            data={{
-              author: "Virat Kohli",
-              authorImg:
-                "https://images.unsplash.com/photo-1640960543409-dbe56ccc30e2?q=80&w=2725&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-              content:
-                "Coming back to India and staying with your parents heals you in ways you never knew you needed 🥹❤️ 1 month in India gives you strength for those 11 months in pardesh 🫶",
-              contentImg: "",
-              username: "@viratkholi",
-              createdAt: new Date(),
-            }}
-          />
-          <FeedCard
-            data={{
-              author: "Virat Kohli",
-              authorImg:
-                "https://images.unsplash.com/photo-1640960543409-dbe56ccc30e2?q=80&w=2725&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-              content:
-                "Coming back to India and staying with your parents heals you in ways you never knew you needed 🥹❤️ 1 month in India gives you strength for those 11 months in pardesh 🫶",
-              contentImg: "",
-              username: "@viratkholi",
-              createdAt: new Date(),
-            }}
-          />
+          {user.data.getUserById.posts.map((item: any, index: any) => {
+            return (
+              <FeedCard
+                key={index}
+                data={{
+                  userId: user.data.getUserById.id,
+                  author: user.data.getUserById.name || "",
+                  authorImg: user.data?.getUserById.profileImg || "",
+                  content: item?.content || "",
+                  contentImg: item?.contentImg || "",
+                  username: user.data?.getUserById.email || "",
+                  createdAt: new Date(parseInt(item.createdAt)).toDateString(),
+                }}
+              />
+            );
+          })}
         </div>
       </div>
     </div>

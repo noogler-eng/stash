@@ -14,8 +14,9 @@ export const currentUser = () => {
 };
 
 export const userById = ({ id }: { id: string }) => {
+  console.log(id, "reached here");
   const query = useQuery({
-    queryKey: ["getUserById", id], // Include id in the query key for caching
+    queryKey: ["getUserById", id],
     queryFn: async () => await graphQLClient.request(getUserById, { id }),
   });
 

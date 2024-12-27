@@ -30,7 +30,12 @@ export const getUserById = graphql(`
         contentImg
         content
         likes
-        comments
+        comments {
+          id
+          userId
+          content
+          createdAt
+        }
         createdAt
       }
     }

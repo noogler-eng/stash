@@ -9,18 +9,21 @@ export default function FeedCard({
   data,
 }: {
   data: {
+    userId: string;
     author: string;
     authorImg: string;
     content: string;
     contentImg?: string;
     username: string;
-    createdAt: Date;
+    createdAt: string;
   };
 }) {
+  console.log(new Date(data.createdAt));
+
   return (
-    <div className="flex rounded-xl border-b p-4 cursor-pointer">
+    <div className="flex rounded-xl border-b p-4 cursor-pointer w-full border-2">
       <div>
-        <Link href={`/profile/${data.username}`}>
+        <Link href={`/profile/${data.userId}`}>
           {data.authorImg && (
             <Image
               src={data.authorImg}
@@ -37,12 +40,12 @@ export default function FeedCard({
           <p className="">
             <span className="text-lg font-extrabold">{data.author}</span>.
             <span className="text-gray-500">{data.username}</span>.
-            <span className="text-gray-500">
-              {data.createdAt.toLocaleDateString()}
-            </span>
+            <span className="text-gray-500">{data.createdAt}</span>
           </p>
-          {data.contentImg && <img src={data.contentImg} />}
-          <p>{data.content}</p>
+          {data.contentImg && (
+            <img src={data.contentImg} className="w-full rounded-xl mt-4" />
+          )}
+          <p className="min-h-5">{data.content}</p>
         </div>
         <div className="flex justify-between items-center px-16 mt-1">
           <MessageCircle size={18} />
